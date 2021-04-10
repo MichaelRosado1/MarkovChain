@@ -9,6 +9,9 @@ class Vertex:
         self.neighbors = []
         self.neighborsWeights = []
         
+    def __str__(self):
+        return self.value + ' '.join([node.value for node in self.adjacent.keys()])
+
     def addEdge(self, vertex, weight = 0):
         self.adjacent[vertex] = weight
 
@@ -17,6 +20,9 @@ class Vertex:
         #if it doesn't exist yet, then .get will return 0
         self.adjacent[vertex] = self.adjacent.get(vertex, 0) + 1
     
+    def getAdjacentNodes(self):
+        return self.adjacent.keys()
+
     def probabilityMap(self):
         for (vertex, weight) in self.adjacent.items():
             self.neighbors.append(vertex)
@@ -44,7 +50,7 @@ class Graph:
         return self.vertices[value]
     
     def getNextWord(self, currentVertex):
-        self.vertices[currentVertex.value].nextWord()
+        return self.vertices[currentVertex.value].nextWord()
     
     def generateProbMapping(self):
         for vertex in self.vertices.values():
