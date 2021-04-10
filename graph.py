@@ -29,7 +29,7 @@ class Vertex:
             self.neighborsWeights.append(weight)
 
     def nextWord(self):
-        return random.choices(self.neighbors, weights = self.neighborsWeights)
+        return random.choices(self.neighbors, weights = self.neighborsWeights)[0]
     
 
 
